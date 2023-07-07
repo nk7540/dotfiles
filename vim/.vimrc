@@ -1,7 +1,7 @@
 "--------------------------------------------------------------
 "          shell                                            <<<
 "--------------------------------------------------------------
-set shell=/bin/zsh
+" set shell=/bin/zsh
 " <<<
 
 "--------------------------------------------------------------
@@ -36,7 +36,7 @@ let mapleader = " "
 set noswapfile
 
 " ヤンクに*レジスタを使う
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 " ビープ音を消す
 set belloff=all
@@ -71,11 +71,11 @@ set foldlevel=50
 "          indent, space, tab                               <<<
 "--------------------------------------------------------------
 set expandtab
-set tabstop=2
-set softtabstop=2
+set tabstop=4
+set softtabstop=4
 set autoindent
 set smartindent
-set shiftwidth=2
+set shiftwidth=4
 au FileType go setlocal sw=4 ts=4 sts=4 noet
 set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
@@ -99,25 +99,26 @@ endif
 "--------------------------------------------------------------
 vnoremap x "_x
 nnoremap x "_x
-nnoremap bd :bd<CR>
+" nnoremap bd :bd<CR>
 
 " 括弧の補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap ` ``<LEFT>
-inoremap < <><LEFT>
+" inoremap < <><LEFT>
 
 " 関数括弧の補完
-inoremap {<CR> {}<Left><CR><ESC><S-o>
-inoremap [<CR> []<Left><CR><ESC><S-o>
-inoremap (<CR> ()<Left><CR><ESC><S-o>
+" inoremap {<CR> {}<Left><CR><ESC><S-o>
+" inoremap [<CR> []<Left><CR><ESC><S-o>
+" inoremap (<CR> ()<Left><CR><ESC><S-o>
 
 " クオーテーションの補完
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
+" inoremap ' ''<LEFT>
+" inoremap " ""<LEFT>
 
-" insertモードでemacsのキーバインドを使えるようにする
+
+
 imap <C-p> <Up>
 imap <C-n> <Down>
 imap <C-b> <Left>
@@ -140,6 +141,9 @@ nnoremap sv :<C-u>vs<CR><C-w>l
 tmap <C-y> <c-\><c-n>
 " <<<
 
+nnoremap <Enter> o<Esc>
+inoremap <silent> jj <ESC>
+
 "--------------------------------------------------------------
 "          plugin manager                                   <<<
 "--------------------------------------------------------------
@@ -161,7 +165,7 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 " tomlセット
-let s:toml_dir = expand('~/dein/')
+let s:toml_dir = expand('~/vim/dein/')
 
 " プラグインのロード
 if dein#load_state(s:dein_dir)
@@ -201,6 +205,6 @@ if (empty($TMUX))
 endif
 
 syntax on
-colorscheme onedark
+" colorscheme onedark
 filetype plugin indent on
 " <<<
